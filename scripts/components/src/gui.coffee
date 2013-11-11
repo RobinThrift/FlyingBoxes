@@ -1,0 +1,9 @@
+define [], () ->
+
+
+    GUI = {
+
+    }
+
+
+    return GUI
