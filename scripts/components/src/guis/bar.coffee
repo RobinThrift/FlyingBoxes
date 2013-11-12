@@ -17,8 +17,6 @@ define ["lodash", "babylon", "c/gui", "zepto"], (_, BABYLON, GUI, $) ->
 
             @styles[@opts.pos] = @opts.x
 
-            console.log @styles
-
             @wrapper.css @styles
 
             @bar = $ "<div class='barGUI__indicator' />"

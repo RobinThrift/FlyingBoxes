@@ -127,15 +127,23 @@
       pos: [0, 0, 0],
       colour: Bits.rgbToFloatObj(144, 202, 97)
     });
-    mainLight.update = function(self) {};
     spot1 = new Light("spot", "spot1", {
       pos: [-3, -2, -2],
       to: [0, -1.5, 2],
       debug: false,
       angle: 10,
-      decay: 10,
-      colour: Bits.rgbToFloatObj(221, 0, 0)
+      decay: 1,
+      colour: Bits.rgbToFloatObj(221, 24, 52)
     });
+    spot1.dirX = 2.5;
+    spot1.update = function(self) {
+      if (self.light.position.x > 40) {
+        self.dirX = -2.5;
+      } else if (self.light.position.x < -40) {
+        self.dirX = 2.5;
+      }
+      return self.light.position.addInPlace(new BABYLON.Vector3(self.dirX, 0, 0));
+    };
     spot2 = new Light("spot", "spot2", {
       pos: [0, -2, -2],
       to: [0, -1.5, 2],

@@ -24,7 +24,6 @@
           height: this.opts.height
         };
         this.styles[this.opts.pos] = this.opts.x;
-        console.log(this.styles);
         this.wrapper.css(this.styles);
         this.bar = $("<div class='barGUI__indicator' />");
         this.bar.css("background", this.opts.colour);
