@@ -1,7 +1,7 @@
-define ["babylon", "c/bentity"], (BABYLON, BEntity) ->
+define ["lodash", "babylon", "c/bentity"], (_, BABYLON, BEntity) ->
 
 
-    class Camera
+    class Spawner
 
         constructor: (options = {}) ->
 
@@ -37,4 +37,4 @@ define ["babylon", "c/bentity"], (BABYLON, BEntity) ->
         addToPool: (entity) ->
             @entities.push entity
 
-    return Camera
+    return Spawner

@@ -1,5 +1,1 @@
-define([], function() {
-  var GUI;
-  GUI = {};
-  return GUI;
-});
+(function(){define(["lodash","babylon"],function(t){var n;return n=function(){function n(n,e){this.name=n,null==e&&(e={}),this.defaults={type:"text",pos:"left",colour:"#f0f0f0",x:0,y:0,width:100,height:100},this.opts=t.extend(this.defaults,e)}return n.prototype.update=function(){},n.prototype.attach=function(){},n}()})}).call(this);

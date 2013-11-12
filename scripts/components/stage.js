@@ -39,7 +39,7 @@
           _ref1 = _this.lights;
           for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
             light = _ref1[_j];
-            light.update();
+            light.update(light);
           }
           _ref2 = _this.spawners;
           for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {

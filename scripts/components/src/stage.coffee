@@ -35,7 +35,7 @@ define ["babylon", "KeyboardJS/keyboard", "c/bits"], (BABYLON, KeyboardJS, Bits)
                     entity.update(@tick, activeKeys)
 
                 for light in @lights
-                    light.update()
+                    light.update(light)
 
                 for spawner in @spawners
                     spawner.update(@tick)

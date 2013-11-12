@@ -1,8 +1,8 @@
 (function() {
-  define(["babylon", "c/bentity"], function(BABYLON, BEntity) {
-    var Camera;
-    Camera = (function() {
-      function Camera(options) {
+  define(["lodash", "babylon", "c/bentity"], function(_, BABYLON, BEntity) {
+    var Spawner;
+    Spawner = (function() {
+      function Spawner(options) {
         if (options == null) {
           options = {};
         }
@@ -18,11 +18,11 @@
         this.onStageEnts = [];
       }
 
-      Camera.prototype.attach = function(scene) {
+      Spawner.prototype.attach = function(scene) {
         return this.scene = scene;
       };
 
-      Camera.prototype.update = function(tick) {
+      Spawner.prototype.update = function(tick) {
         var entity, _i, _len, _ref, _results;
         if (!(tick % this.opts.interval) && this.spawned < this.opts.limit) {
           this.spawned = this.emit();
@@ -36,18 +36,18 @@
         return _results;
       };
 
-      Camera.prototype.emit = function() {
+      Spawner.prototype.emit = function() {
         return this.spawned = this.opts.emit(this.scene, this.entities, this.opts.limit, this.spawned, this.onStageEnts);
       };
 
-      Camera.prototype.addToPool = function(entity) {
+      Spawner.prototype.addToPool = function(entity) {
         return this.entities.push(entity);
       };
 
-      return Camera;
+      return Spawner;
 
     })();
-    return Camera;
+    return Spawner;
   });
 
 }).call(this);
