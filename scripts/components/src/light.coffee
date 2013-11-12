@@ -58,5 +58,7 @@ define ["babylon"], (BABYLON) ->
 
             if @type == "hemi" then @light.groundColor = new BABYLON.Color3 @opts.groundColor.r, @opts.groundColor.g, @opts.groundColor.b
 
+        update: () ->
+            
 
     return Light

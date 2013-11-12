@@ -13,6 +13,8 @@ define ["babylon", "KeyboardJS/keyboard", "c/bits"], (BABYLON, KeyboardJS, Bits)
             @entities = []
             @camera = null
             @lights = []
+            @spawners = []
+            @tick = 0
 
 
         height: () ->
@@ -30,9 +32,21 @@ define ["babylon", "KeyboardJS/keyboard", "c/bits"], (BABYLON, KeyboardJS, Bits)
                 activeKeys = KeyboardJS.activeKeys()
 
                 for entity in @entities
-                    entity.update(0, activeKeys)
+                    entity.update(@tick, activeKeys)
+
+                for light in @lights
+                    light.update()
+
+                for spawner in @spawners
+                    spawner.update(@tick)
+
+                @camera.update()
+
+
 
                 @scene.render()
+
+                @tick++
 
 
         addCamera: (camera) ->
@@ -46,6 +60,10 @@ define ["babylon", "KeyboardJS/keyboard", "c/bits"], (BABYLON, KeyboardJS, Bits)
         addEntity: (entity) ->
             entity.attach @scene
             @entities.push entity
+
+        addSpawner: (spawner) ->
+            spawner.attach @scene
+            @spawners.push spawner
 
 
     return Stage

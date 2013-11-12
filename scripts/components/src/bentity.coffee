@@ -21,6 +21,8 @@ define ["babylon", "lodash"], (BABYLON, _) ->
                     b: 1
                 }
                 specularPower: 64
+                animate: (tick) ->
+
             }
 
             @opts = _.extend @defaults, options
@@ -56,7 +58,7 @@ define ["babylon", "lodash"], (BABYLON, _) ->
 
 
         animate: (tick) ->
-            
+            @opts.animate this, tick
 
         checkControls: (activeKeys) ->
             _.each @controls, (fn, key) ->
@@ -87,7 +89,7 @@ define ["babylon", "lodash"], (BABYLON, _) ->
             @mesh.position.z
 
 
-        delete: () ->
+        destroy: () ->
             @mesh.dispose()
 
     return BEntity

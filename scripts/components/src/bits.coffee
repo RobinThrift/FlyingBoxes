@@ -4,6 +4,9 @@ define ["babylon", "lodash"], (BABYLON, _) ->
         randomStr: () ->
             Math.random().toString(36).substring(7)
 
+        randInt: (min, max) ->
+            Math.floor(Math.random() * (max - min) + min)
+
         rgbToFloat: (rgbVal) ->
             factor = 0.003921569
             rgbVal*factor

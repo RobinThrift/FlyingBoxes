@@ -122,6 +122,47 @@ requirejs [
             colour: Bits.rgbToFloatObj(0, 0, 255)
         }
 
+        eSpawner = new Spawner {
+            limit: 30
+            interval: 30
+            emit: (scene, enities, limit, spawned, onStageEnts) ->
+                for e in enities
+                    if (spawned < limit)
+                        _e = new BEntity "b", e.type, e
+                        onStageEnts.push _e
+                        stage.addEntity _e
+                        x = Bits.randInt(0, 10)
+                        x = (Math.random() > 0.5) ? -x-2 : x+3
+                        _e.setPosition x, 10, 0
+                        spawned++
+
+                return spawned
+
+            update: (e, tick) ->
+                if e.getPosition().y > -8
+                    e.move(0, -.1, 0)
+                else
+                    x = Bits.randInt(0, 10)
+                    x = (Math.random() > 0.5) ? -x-2 : x+3
+                    e.setPosition x, 10, 0
+        } 
+
+        eSpawner.addToPool {
+            type: "box"
+            size: 0.4,
+            pos: [0, 0, 0]
+            Zscaling: 0.3
+            Xscaling: 2
+            Yscaling: 1.1
+            colour: {
+                r: 1
+                g: 0
+                b: 0.23
+            }
+        }
+
+        stage.addSpawner eSpawner
+
         stage.addCamera mainCam
 
         stage.addLight mainLight

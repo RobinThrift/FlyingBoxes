@@ -30,4 +30,7 @@ define ["babylon"], (BABYLON) ->
         move: (x = 0, y = 0, z = 0) ->
             @mesh.position.addInPlace new BABYLON.Vector3 x, y, z
 
+        update: () ->
+            
+
     return Camera
